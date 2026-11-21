@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DP Parfüm Kodları & Muadil Listesi (Genişletilmiş)</title>
+  <title>DP Parfüm Kodları & Muadil Listesi</title>
+  
+  <!-- DOĞRUDAN KOD İÇİNE GÖMÜLMÜŞ SİMGE (ICON) -->
+  <link rel="apple-touch-icon" href="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20180%20180%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22gold%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%22100%25%22%3E%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23f5d6b4%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23c49464%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22180%22%20height%3D%22180%22%20fill%3D%22%231e1e2f%22%2F%3E%3Crect%20x%3D%2245%22%20y%3D%2250%22%20width%3D%2290%22%20height%3D%22110%22%20rx%3D%2215%22%20fill%3D%22%232a2a40%22%20stroke%3D%22url(%23gold)%22%20stroke-width%3D%226%22%2F%3E%3Crect%20x%3D%2280%22%20y%3D%2230%22%20width%3D%2220%22%20height%3D%2225%22%20rx%3D%224%22%20fill%3D%22url(%23gold)%22%2F%3E%3Ctext%20x%3D%2290%22%20y%3D%22125%22%20font-family%3D%22sans-serif%22%20font-size%3D%2242%22%20font-weight%3D%22bold%22%20fill%3D%22url(%23gold)%22%20text-anchor%3D%22middle%22%20letter-spacing%3D%222%22%3EDP%3C%2Ftext%3E%3C%2Fsvg%3E">
+
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, system-ui, sans-serif; }
     body { background: linear-gradient(145deg, #1e1e2f 0%, #2a2a40 100%); min-height: 100vh; display: flex; justify-content: center; padding: 2rem 1rem; }
@@ -123,7 +127,6 @@
 <script>
   // Genişletilmiş veri listeleri (Parfüm sayısı 260+)
   const kadinData = [
-    // A Serisi
     { code: "A1", original: "ALCHIMIE", brand: "Halloween", sim: "8/10", img: "https://fimgs.net/mdimg/perfume/375x500.402.jpg" },
     { code: "A2", original: "ALLURE", brand: "Chanel", sim: "7/10", img: "https://fimgs.net/mdimg/perfume/375x500.518.jpg" },
     { code: "A3", original: "AMARIGE", brand: "Givenchy", sim: "—" },
@@ -146,7 +149,6 @@
     { code: "A20", original: "ARMANI CODE", brand: "Giorgio Armani", sim: "—" },
     { code: "A21", original: "ARMANI REMIX", brand: "Giorgio Armani", sim: "—" },
     { code: "A22", original: "ARMANI DIAMONDS", brand: "Giorgio Armani", sim: "—" },
-    // B Serisi
     { code: "B1", original: "BABY DOLL", brand: "Yves Saint Laurent", sim: "—", img: "https://fimgs.net/mdimg/perfume/375x500.89.jpg" },
     { code: "B2", original: "BEAUTIFUL", brand: "Estée Lauder", sim: "—" },
     { code: "B3", original: "BVLGARI", brand: "Bvlgari", sim: "—" },
@@ -164,7 +166,6 @@
     { code: "B15", original: "BRITNEY SPEARS CURIOUS", brand: "Britney Spears", sim: "—" },
     { code: "B16", original: "BVLGARI BLU NOTTE", brand: "Bvlgari", sim: "—" },
     { code: "B17", original: "BURBERRY LONDON", brand: "Burberry", sim: "8/10" },
-    // C Serisi
     { code: "C1", original: "CABOTINE", brand: "Grès", sim: "—" },
     { code: "C2", original: "212", brand: "Carolina Herrera", sim: "—" },
     { code: "C3", original: "CAŠMIR", brand: "Chopard", sim: "—" },
@@ -196,7 +197,6 @@
     { code: "C29", original: "PROMESSE", brand: "Cacharel", sim: "—" },
     { code: "C30", original: "CALVIN KLEIN IN2U", brand: "Calvin Klein", sim: "—" },
     { code: "C31", original: "DIOR ADDICT II", brand: "Dior", sim: "—" },
-    // D Serisi
     { code: "D1", original: "COOL WATER", brand: "Davidoff", sim: "—" },
     { code: "D2", original: "DIOR ENERGISSANTE", brand: "Dior", sim: "—" },
     { code: "D3", original: "DIORISSIMO", brand: "Dior", sim: "—" },
@@ -219,7 +219,6 @@
     { code: "D20", original: "D&G CAPRICE", brand: "Dolce & Gabbana", sim: "—" },
     { code: "D21", original: "BE DELICIOUS", brand: "Donna Karan", sim: "—" },
     { code: "D22", original: "THE ONE", brand: "Dolce & Gabbana", sim: "—" },
-    // E Serisi
     { code: "E1", original: "EAU D'EDEN", brand: "Cacharel", sim: "—" },
     { code: "E2", original: "EDEN", brand: "Cacharel", sim: "—" },
     { code: "E3", original: "ENVY", brand: "Gucci", sim: "—" },
@@ -241,7 +240,6 @@
     { code: "E19", original: "ESCADA ROCKIN' RIO", brand: "Escada", sim: "—" },
     { code: "E20", original: "RITA", brand: "—", sim: "—" },
     { code: "E21", original: "ESCADA INTO THE BLUE", brand: "Escada", sim: "—" },
-    // F, G, H, I, J, K, L, M, N, O, P, R, S, T Serileri
     { code: "F1", original: "FREEDOM FOR HER", brand: "—", sim: "—" },
     { code: "F2", original: "FIDJI", brand: "Guy Laroche", sim: "—" },
     { code: "G1", original: "ENVY ME", brand: "Gucci", sim: "—" },
@@ -362,7 +360,6 @@
   ];
 
   const erkekData = [
-    // A Serisi
     { code: "A1", original: "ALCHIMIE / CODE", brand: "Thierry Mugler / Armani", sim: "8/10", img: "https://fimgs.net/mdimg/perfume/375x500.413.jpg" },
     { code: "A2", original: "ACQUA DI GIÒ", brand: "Giorgio Armani", sim: "—", img: "https://fimgs.net/mdimg/perfume/375x500.160.jpg" },
     { code: "A3", original: "ALLURE HOMME", brand: "Chanel", sim: "—" },
@@ -381,7 +378,6 @@
     { code: "A16", original: "AZZARO CHROME", brand: "Azzaro", sim: "—" },
     { code: "A18", original: "ARMANI GINO", brand: "Giorgio Armani", sim: "—" },
     { code: "A20", original: "ARMANI CODE", brand: "Giorgio Armani", sim: "—" },
-    // B Serisi
     { code: "B1", original: "212 MEN", brand: "Carolina Herrera", sim: "—" },
     { code: "B2", original: "BLACK JEANS", brand: "Versace", sim: "—" },
     { code: "B3", original: "BLUE JEANS", brand: "Versace", sim: "—" },
@@ -396,7 +392,6 @@
     { code: "B13", original: "BRUT", brand: "Fabergé", sim: "—" },
     { code: "B17", original: "BVLGARI BLU NOTTE", brand: "Bvlgari", sim: "—" },
     { code: "B18", original: "BVLGARI ELIT", brand: "Bvlgari", sim: "—" },
-    // C Serisi
     { code: "C1", original: "212 MEN", brand: "Carolina Herrera", sim: "—" },
     { code: "C2", original: "CACHAREL POUR L'HOMME", brand: "Cacharel", sim: "—" },
     { code: "C3", original: "CERRUTI 1881", brand: "Cerruti", sim: "—" },
@@ -410,7 +405,6 @@
     { code: "C16", original: "212 SEXY MAN", brand: "Carolina Herrera", sim: "—" },
     { code: "C17", original: "CHANEL ALLURE SPORT", brand: "Chanel", sim: "—" },
     { code: "C18", original: "AVENTUS", brand: "Creed", sim: "—", img: "https://fimgs.net/mdimg/perfume/375x500.9828.jpg" },
-    // D Serisi
     { code: "D1", original: "DIESEL ONLY THE BRAVE", brand: "Diesel", sim: "—" },
     { code: "D4", original: "SAUVAGE", brand: "Dior", sim: "—", img: "https://fimgs.net/mdimg/perfume/375x500.35382.jpg" },
     { code: "D5", original: "DOLCE & GABBANA MASCULINE", brand: "Dolce & Gabbana", sim: "—" },
@@ -422,14 +416,12 @@
     { code: "D13", original: "DIESEL GREEN MEN", brand: "Diesel", sim: "—" },
     { code: "D18", original: "THE ONE FOR MEN", brand: "Dolce & Gabbana", sim: "—", img: "https://fimgs.net/mdimg/perfume/375x500.1100.jpg" },
     { code: "D19", original: "FUEL FOR LIFE", brand: "Diesel", sim: "—" },
-    // E Serisi
     { code: "E1", original: "CHANEL EGOISTE", brand: "Chanel", sim: "—" },
     { code: "E2", original: "CHANEL EGOISTE PLATINUM", brand: "Chanel", sim: "—" },
     { code: "E3", original: "ELEMENTS", brand: "Hugo Boss", sim: "—" },
     { code: "E4", original: "EMPORIO ARMANI HE", brand: "Giorgio Armani", sim: "—" },
     { code: "E10", original: "EMPORIO ARMANI WHITE", brand: "Giorgio Armani", sim: "—" },
     { code: "E11", original: "EMPORIO ARMANI NIGHT", brand: "Giorgio Armani", sim: "—" },
-    // F, G, H, I, J, K, L, R, Z Serileri
     { code: "F1", original: "FAHRENHEIT", brand: "Dior", sim: "—" },
     { code: "F2", original: "FAHRENHEIT SUMMER", brand: "Dior", sim: "—" },
     { code: "F3", original: "FOREVER DIOR", brand: "Dior", sim: "—" },
