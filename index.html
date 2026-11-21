@@ -5,274 +5,86 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DP Parfüm Kodları & Muadil Listesi</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, system-ui, sans-serif; }
+    body { background: linear-gradient(145deg, #1e1e2f 0%, #2a2a40 100%); min-height: 100vh; display: flex; justify-content: center; padding: 2rem 1rem; }
+    .infographic { max-width: 1300px; width: 100%; }
+    
+    .header { text-align: center; margin-bottom: 2rem; }
+    .header h1 { font-size: 2.8rem; font-weight: 700; background: linear-gradient(135deg, #f5d6b4, #e8b88a, #d4a574); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: -0.5px; margin-bottom: 0.5rem; }
+    .header p { color: #a0a0b8; font-size: 1.1rem; font-weight: 300; max-width: 700px; margin: 0 auto; line-height: 1.6; }
+    .header .accent-line { width: 80px; height: 3px; background: linear-gradient(90deg, #d4a574, #f5d6b4); margin: 1.2rem auto 0; border-radius: 2px; }
 
-    body {
-      background: linear-gradient(145deg, #1e1e2f 0%, #2a2a40 100%);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      padding: 2rem 1rem;
-    }
+    .search-container { display: flex; justify-content: center; margin-bottom: 1.5rem; }
+    #searchInput { width: 100%; max-width: 500px; padding: 0.9rem 1.5rem; border-radius: 50px; border: 1px solid rgba(255, 255, 255, 0.15); background: rgba(255, 255, 255, 0.08); color: #fff; font-size: 1rem; outline: none; transition: all 0.3s ease; backdrop-filter: blur(10px); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); }
+    #searchInput::placeholder { color: #8888a0; }
+    #searchInput:focus { border-color: #d4a574; background: rgba(255, 255, 255, 0.12); box-shadow: 0 0 20px rgba(212, 165, 116, 0.25); }
 
-    .infographic {
-      max-width: 1300px;
-      width: 100%;
-    }
+    .tabs { display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .tab-btn { background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.1); color: #b8b8d0; padding: 0.75rem 2rem; border-radius: 50px; font-size: 0.95rem; font-weight: 500; cursor: pointer; transition: all 0.3s ease; letter-spacing: 0.3px; backdrop-filter: blur(8px); }
+    .tab-btn:hover { background: rgba(255, 255, 255, 0.12); color: #e0e0f0; border-color: rgba(255, 255, 255, 0.2); }
+    .tab-btn.active { background: linear-gradient(135deg, #d4a574, #c49464); color: #1e1e2f; border-color: transparent; font-weight: 600; box-shadow: 0 8px 25px rgba(212, 165, 116, 0.35); }
 
-    .header {
-      text-align: center;
-      margin-bottom: 2rem;
-      position: relative;
-    }
+    .table-container { background: rgba(255, 255, 255, 0.04); border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.08); overflow: hidden; backdrop-filter: blur(12px); box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4); display: none; max-height: 600px; overflow-y: auto; }
+    .table-container.active { display: block; animation: fadeUp 0.4s ease; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 
-    .header h1 {
-      font-size: 2.8rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, #f5d6b4, #e8b88a, #d4a574);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      letter-spacing: -0.5px;
-      margin-bottom: 0.5rem;
-    }
+    table { width: 100%; border-collapse: collapse; }
+    thead th { background: rgba(212, 165, 116, 0.15); color: #f5d6b4; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; padding: 1.2rem 1.5rem; text-align: left; border-bottom: 1px solid rgba(255, 255, 255, 0.08); position: sticky; top: 0; backdrop-filter: blur(10px); z-index: 2; }
+    tbody td { padding: 0.8rem 1.5rem; color: #d0d0e0; font-size: 0.92rem; border-bottom: 1px solid rgba(255, 255, 255, 0.04); transition: background 0.2s; }
+    tbody tr:hover td { background: rgba(212, 165, 116, 0.08); }
+    tbody tr:last-child td { border-bottom: none; }
 
-    .header p {
-      color: #a0a0b8;
-      font-size: 1.1rem;
-      font-weight: 300;
-      max-width: 700px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
+    .code-badge { display: inline-block; background: linear-gradient(135deg, rgba(212, 165, 116, 0.25), rgba(212, 165, 116, 0.1)); color: #f5d6b4; padding: 0.35rem 0.9rem; border-radius: 8px; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.5px; border: 1px solid rgba(212, 165, 116, 0.2); min-width: 65px; text-align: center; }
 
-    .header .accent-line {
-      width: 80px;
-      height: 3px;
-      background: linear-gradient(90deg, #d4a574, #f5d6b4);
-      margin: 1.2rem auto 0;
-      border-radius: 2px;
-    }
+    .perfume-info { display: flex; align-items: center; gap: 12px; cursor: pointer; transition: transform 0.2s; }
+    .perfume-info:hover { transform: scale(1.02); }
+    .perfume-img { width: 45px; height: 45px; border-radius: 8px; object-fit: cover; background: #1e1e2f; border: 1px solid rgba(212, 165, 116, 0.3); flex-shrink: 0; transition: border-color 0.3s; }
+    .perfume-info:hover .perfume-img { border-color: #d4a574; }
+    
+    .perfume-text { display: flex; flex-direction: column; }
+    .original-name { color: #e8e8f0; font-weight: 500; }
+    .original-brand { color: #a0a0b8; font-size: 0.82rem; margin-top: 2px; }
+    .similarity { display: inline-block; background: rgba(100, 220, 150, 0.15); color: #7ed6a0; padding: 0.3rem 0.7rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600; }
 
-    /* --- ARAMA ÇUBUĞU --- */
-    .search-container {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 1.5rem;
-    }
+    .info-note { text-align: center; margin-top: 2rem; color: #707088; font-size: 0.85rem; line-height: 1.7; padding: 1.5rem; background: rgba(255, 255, 255, 0.02); border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.05); }
+    .info-note strong { color: #d4a574; font-weight: 600; }
+    .count-badge { display: inline-block; background: rgba(212, 165, 116, 0.2); color: #d4a574; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; margin-left: 0.5rem; font-weight: 600; vertical-align: middle; }
 
-    #searchInput {
-      width: 100%;
-      max-width: 500px;
-      padding: 0.9rem 1.5rem;
-      border-radius: 50px;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      background: rgba(255, 255, 255, 0.08);
-      color: #fff;
-      font-size: 1rem;
-      outline: none;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    /* --- MODAL (LIGHTBOX) TASARIMI --- */
+    .modal {
+      display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%;
+      background-color: rgba(15, 15, 25, 0.85); backdrop-filter: blur(8px);
+      justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease;
     }
+    .modal.show { display: flex; opacity: 1; }
+    .modal-content {
+      background: #2a2a40; padding: 2rem; border-radius: 20px; border: 1px solid rgba(212, 165, 116, 0.3);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.6); text-align: center; max-width: 90%; width: 400px;
+      position: relative; transform: translateY(-20px); transition: transform 0.3s ease;
+    }
+    .modal.show .modal-content { transform: translateY(0); }
+    
+    .close-btn {
+      position: absolute; top: 15px; right: 20px; color: #a0a0b8; font-size: 1.8rem;
+      font-weight: bold; cursor: pointer; transition: color 0.2s; line-height: 1;
+    }
+    .close-btn:hover { color: #fff; }
 
-    #searchInput::placeholder {
-      color: #8888a0;
+    .modal-img {
+      width: 200px; height: 200px; border-radius: 12px; object-fit: cover;
+      border: 2px solid rgba(212, 165, 116, 0.4); margin: 1rem auto; display: block;
+      background: #1e1e2f;
     }
+    .modal-title { color: #f5d6b4; font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .modal-brand { color: #a0a0b8; font-size: 0.9rem; margin-bottom: 1.5rem; }
 
-    #searchInput:focus {
-      border-color: #d4a574;
-      background: rgba(255, 255, 255, 0.12);
-      box-shadow: 0 0 20px rgba(212, 165, 116, 0.25);
+    .google-btn {
+      display: inline-block; background: linear-gradient(135deg, #d4a574, #c49464); color: #1e1e2f;
+      text-decoration: none; padding: 0.8rem 1.5rem; border-radius: 50px; font-weight: 600;
+      font-size: 0.9rem; transition: all 0.3s; width: 100%; box-sizing: border-box;
+      box-shadow: 0 4px 15px rgba(212, 165, 116, 0.3);
     }
-
-    /* --- SEKMELER --- */
-    .tabs {
-      display: flex;
-      justify-content: center;
-      gap: 0.5rem;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
-    }
-
-    .tab-btn {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: #b8b8d0;
-      padding: 0.75rem 2rem;
-      border-radius: 50px;
-      font-size: 0.95rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      letter-spacing: 0.3px;
-      backdrop-filter: blur(8px);
-    }
-
-    .tab-btn:hover {
-      background: rgba(255, 255, 255, 0.12);
-      color: #e0e0f0;
-      border-color: rgba(255, 255, 255, 0.2);
-    }
-
-    .tab-btn.active {
-      background: linear-gradient(135deg, #d4a574, #c49464);
-      color: #1e1e2f;
-      border-color: transparent;
-      font-weight: 600;
-      box-shadow: 0 8px 25px rgba(212, 165, 116, 0.35);
-    }
-
-    /* --- TABLO --- */
-    .table-container {
-      background: rgba(255, 255, 255, 0.04);
-      border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      overflow: hidden;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
-      display: none;
-      max-height: 600px;
-      overflow-y: auto;
-    }
-
-    .table-container.active {
-      display: block;
-      animation: fadeUp 0.4s ease;
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(12px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    thead th {
-      background: rgba(212, 165, 116, 0.15);
-      color: #f5d6b4;
-      font-weight: 600;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      padding: 1.2rem 1.5rem;
-      text-align: left;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      position: sticky;
-      top: 0;
-      backdrop-filter: blur(10px);
-      z-index: 2;
-    }
-
-    tbody td {
-      padding: 0.8rem 1.5rem;
-      color: #d0d0e0;
-      font-size: 0.92rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-      transition: background 0.2s;
-    }
-
-    tbody tr:hover td {
-      background: rgba(212, 165, 116, 0.08);
-    }
-
-    tbody tr:last-child td {
-      border-bottom: none;
-    }
-
-    .code-badge {
-      display: inline-block;
-      background: linear-gradient(135deg, rgba(212, 165, 116, 0.25), rgba(212, 165, 116, 0.1));
-      color: #f5d6b4;
-      padding: 0.35rem 0.9rem;
-      border-radius: 8px;
-      font-weight: 700;
-      font-size: 0.85rem;
-      letter-spacing: 0.5px;
-      border: 1px solid rgba(212, 165, 116, 0.2);
-      min-width: 65px;
-      text-align: center;
-    }
-
-    /* --- GÖRSEL VE İSİM ALANI --- */
-    .perfume-info {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .perfume-img {
-      width: 40px;
-      height: 40px;
-      border-radius: 8px;
-      object-fit: cover;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      flex-shrink: 0;
-    }
-
-    .perfume-text {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .original-name {
-      color: #e8e8f0;
-      font-weight: 500;
-    }
-
-    .original-brand {
-      color: #a0a0b8;
-      font-size: 0.82rem;
-      margin-top: 2px;
-    }
-
-    .similarity {
-      display: inline-block;
-      background: rgba(100, 220, 150, 0.15);
-      color: #7ed6a0;
-      padding: 0.3rem 0.7rem;
-      border-radius: 6px;
-      font-size: 0.8rem;
-      font-weight: 600;
-    }
-
-    .info-note {
-      text-align: center;
-      margin-top: 2rem;
-      color: #707088;
-      font-size: 0.85rem;
-      line-height: 1.7;
-      padding: 1.5rem;
-      background: rgba(255, 255, 255, 0.02);
-      border-radius: 16px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .info-note strong {
-      color: #d4a574;
-      font-weight: 600;
-    }
-
-    .count-badge {
-      display: inline-block;
-      background: rgba(212, 165, 116, 0.2);
-      color: #d4a574;
-      padding: 0.25rem 0.75rem;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      margin-left: 0.5rem;
-      font-weight: 600;
-      vertical-align: middle;
-    }
+    .google-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212, 165, 116, 0.5); }
 
     @media (max-width: 768px) {
       .header h1 { font-size: 1.8rem; }
@@ -281,7 +93,7 @@
       thead th { padding: 0.9rem 0.8rem; font-size: 0.7rem; letter-spacing: 1px; }
       tbody td { padding: 0.8rem 0.8rem; font-size: 0.85rem; }
       .code-badge { padding: 0.25rem 0.5rem; font-size: 0.75rem; min-width: 50px; }
-      .perfume-img { width: 32px; height: 32px; border-radius: 6px; }
+      .perfume-img { width: 35px; height: 35px; border-radius: 6px; }
     }
   </style>
 </head>
@@ -294,7 +106,6 @@
     <div class="accent-line"></div>
   </div>
 
-  <!-- Arama Çubuğu -->
   <div class="search-container">
     <input type="text" id="searchInput" placeholder="Parfüm adı, marka veya kod arayın...">
   </div>
@@ -306,68 +117,135 @@
   </div>
 
   <div id="table-kadin" class="table-container active">
-    <table>
-      <thead><tr><th>Kod</th><th>Muadil Parfüm</th><th>Benzerlik</th></tr></thead>
-      <tbody id="tbody-kadin"></tbody>
-    </table>
+    <table><thead><tr><th>Kod</th><th>Muadil Parfüm</th><th>Benzerlik</th></tr></thead><tbody id="tbody-kadin"></tbody></table>
   </div>
-
   <div id="table-erkek" class="table-container">
-    <table>
-      <thead><tr><th>Kod</th><th>Muadil Parfüm</th><th>Benzerlik</th></tr></thead>
-      <tbody id="tbody-erkek"></tbody>
-    </table>
+    <table><thead><tr><th>Kod</th><th>Muadil Parfüm</th><th>Benzerlik</th></tr></thead><tbody id="tbody-erkek"></tbody></table>
   </div>
-
   <div id="table-unisex" class="table-container">
-    <table>
-      <thead><tr><th>Kod</th><th>Muadil Parfüm</th><th>Benzerlik</th></tr></thead>
-      <tbody id="tbody-unisex"></tbody>
-    </table>
+    <table><thead><tr><th>Kod</th><th>Muadil Parfüm</th><th>Benzerlik</th></tr></thead><tbody id="tbody-unisex"></tbody></table>
   </div>
 
   <div class="info-note">
-    <strong>Not:</strong> Görseller, eklenen parfümler için gerçek şişe fotoğraflarıdır. Diğerleri için varsayılan DP logosu gösterilir. Kendi görselinizi eklemek için koddaki ilgili parfümün yanına <code>img: "görsel_linki"</code> ekleyebilirsiniz.
+    <strong>İpucu:</strong> Görsele dokunarak büyütebilir ve doğrudan <strong>Google Görseller</strong>'de arama yapabilirsiniz.
+  </div>
+</div>
+
+<!-- BÜYÜTME EKRANI (MODAL) -->
+<div id="imageModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal()">&times;</span>
+    <img id="modalImg" class="modal-img" src="" alt="Parfüm Görseli">
+    <div class="modal-title" id="modalTitle"></div>
+    <div class="modal-brand" id="modalBrand"></div>
+    <a id="modalSearchBtn" href="#" target="_blank" class="google-btn">🔍 Google Görseller'de Ara</a>
   </div>
 </div>
 
 <script>
-  // Görsel eklenmemiş parfümler için varsayılan DP logosu
-  const defaultImg = "https://placehold.co/48x48/2a2a40/d4a574?text=DP";
-
-  // --- KADIN VERİSİ ---
+  // Görsel linkleri (Fragrantica veya genel ağdan çekilmiş statik linkler)
+  // Kod içerisinde 'img' özelliği yoksa veya link kırılırsa otomatik olarak dinamik SVG üretilir.
+  
   const kadinData = [
-    { code: "A1", original: "ALCHIMIE", brand: "Halloween", sim: "8/10" },
-    { code: "A2", original: "ALLURE", brand: "Chanel", sim: "7/10" },
-    { code: "A4", original: "ANGEL", brand: "Thierry Mugler", sim: "—" },
-    { code: "A12", original: "ALIEN", brand: "Thierry Mugler", sim: "—" },
-    { code: "C9", original: "N°5", brand: "Chanel", sim: "—" },
-    // İşte görsel ekleme örnekleri:
+    { code: "A1", original: "ALCHIMIE", brand: "Halloween", sim: "8/10", img: "https://fimgs.net/mdimg/perfume/375x500.402.jpg" },
+    { code: "A2", original: "ALLURE", brand: "Chanel", sim: "7/10", img: "https://fimgs.net/mdimg/perfume/375x500.518.jpg" },
+    { code: "A4", original: "ANGEL", brand: "Thierry Mugler", sim: "—", img: "https://fimgs.net/mdimg/perfume/375x500.287.jpg" },
+    { code: "A12", original: "ALIEN", brand: "Thierry Mugler", sim: "—", img: "https://fimgs.net/mdimg/perfume/375x500.372.jpg" },
+    { code: "C9", original: "N°5", brand: "Chanel", sim: "—", img: "https://fimgs.net/mdimg/perfume/375x500.22.jpg" },
     { code: "C20", original: "COCO MADEMOISELLE", brand: "Chanel", sim: "9/10", img: "https://fimgs.net/mdimg/perfume/375x500.612.jpg" },
     { code: "D15", original: "LIGHT BLUE", brand: "Dolce & Gabbana", sim: "9/10", img: "https://fimgs.net/mdimg/perfume/375x500.1093.jpg" },
-    { code: "H3", original: "HYPNOTIC POISON", brand: "Dior", sim: "9/10" },
+    { code: "H3", original: "HYPNOTIC POISON", brand: "Dior", sim: "9/10", img: "https://fimgs.net/mdimg/perfume/375x500.204.jpg" },
     { code: "L12", original: "HYPNÔSE", brand: "Lancôme", sim: "8/10", img: "https://fimgs.net/mdimg/perfume/375x500.186.jpg" },
-    { code: "P12", original: "OLYMPEA", brand: "Paco Rabanne", sim: "9/10", img: "https://fimgs.net/mdimg/perfume/375x500.34574.jpg" }
+    { code: "P12", original: "OLYMPEA", brand: "Paco Rabanne", sim: "9/10", img: "https://fimgs.net/mdimg/perfume/375x500.34574.jpg" },
+    { code: "C24", original: "CANDY", brand: "Prada", sim: "—", img: "https://fimgs.net/mdimg/perfume/375x500.15462.jpg" },
+    { code: "L1", original: "LA VIE EST BELLE", brand: "Lancôme", sim: "—", img: "https://fimgs.net/mdimg/perfume/375x500.18339.jpg" },
+    { code: "N6", original: "FOR HER", brand: "Narciso Rodriguez", sim: "8/10", img: "https://fimgs.net/mdimg/perfume/375x500.621.jpg" },
+    { code: "C23", original: "CHANCE", brand: "Chanel", sim: "—", img: "https://fimgs.net/mdimg/perfume/375x500.729.jpg" },
+    { code: "A14", original: "ADDICT", brand: "Dior", sim: "—", img: "https://fimgs.net/mdimg/perfume/375x500.210.jpg" },
+    { code: "B1", original: "BABY DOLL", brand: "Yves Saint Laurent", sim: "—", img: "https://fimgs.net/mdimg/perfume/375x500.89.jpg" }
+    // Diğerleri için görsel eklenmediğinde otomatik olarak şık bir metin görseli üretilir.
   ];
 
-  // --- ERKEK VERİSİ ---
   const erkekData = [
-    { code: "A1", original: "ALCHIMIE / CODE", brand: "Thierry Mugler / Armani", sim: "8/10" },
-    { code: "A7", original: "ACQUA DI GIÒ", brand: "Giorgio Armani", sim: "—" },
+    { code: "A1", original: "ALCHIMIE / CODE", brand: "Thierry Mugler / Armani", sim: "8/10", img: "https://fimgs.net/mdimg/perfume/375x500.413.jpg" },
+    { code: "A7", original: "ACQUA DI GIÒ", brand: "Giorgio Armani", sim: "—", img: "https://fimgs.net/mdimg/perfume/375x500.160.jpg" },
     { code: "C18", original: "AVENTUS", brand: "Creed", sim: "—", img: "https://fimgs.net/mdimg/perfume/375x500.9828.jpg" },
     { code: "D4", original: "SAUVAGE", brand: "Dior", sim: "—", img: "https://fimgs.net/mdimg/perfume/375x500.35382.jpg" },
-    { code: "D18", original: "THE ONE FOR MEN", brand: "Dolce & Gabbana", sim: "—" }
+    { code: "D18", original: "THE ONE FOR MEN", brand: "Dolce & Gabbana", sim: "—", img: "https://fimgs.net/mdimg/perfume/375x500.1100.jpg" },
+    { code: "B4", original: "BOSS BOTTLED", brand: "Hugo Boss", sim: "—", img: "https://fimgs.net/mdimg/perfume/375x500.96.jpg" },
+    { code: "G8", original: "GUILTY", brand: "Gucci", sim: "—", img: "https://fimgs.net/mdimg/perfume/375x500.11560.jpg" },
+    { code: "H1", original: "HUGO", brand: "Hugo Boss", sim: "—", img: "https://fimgs.net/mdimg/perfume/375x500.182.jpg" }
   ];
 
-  // --- UNISEX VERİSİ ---
   const unisexData = [
-    { code: "A18", original: "ARMANI GINO", brand: "Giorgio Armani", sim: "—" },
-    { code: "U-L11", original: "AROMATİK VANİLYA & BAHARAT", brand: "D&P Özel Seri", sim: "—" }
+    { code: "A18", original: "ARMANI GINO", brand: "Giorgio Armani", sim: "—", img: "https://fimgs.net/mdimg/perfume/375x500.112.jpg" },
+    { code: "U-L11", original: "AROMATİK VANİLYA & BAHARAT", brand: "D&P Özel Seri", sim: "—" },
+    { code: "U-B22", original: "SEREIN", brand: "D&P Özel Seri", sim: "—" }
   ];
 
-  // Global Değişkenler
   let currentTab = 'kadin';
   let searchQuery = '';
+
+  // Eğer resim yüklenemezse çalışacak fonksiyon
+  function handleImageError(imgElement, name, brand) {
+    // Resim linki kırılırsa, tarayıcı üzerinden anlık olarak şık bir SVG (DP Logolu) üret
+    const safeName = name.length > 12 ? name.substring(0, 10) + '..' : name;
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100">
+      <rect width="100" height="100" fill="#1e1e2f"/>
+      <rect x="25" y="20" width="50" height="60" rx="10" fill="none" stroke="#d4a574" stroke-width="2"/>
+      <rect x="40" y="10" width="20" height="15" rx="3" fill="#d4a574"/>
+      <text x="50" y="55" font-family="Arial" font-size="12" fill="#d4a574" text-anchor="middle" font-weight="bold">${safeName}</text>
+    </svg>`;
+    imgElement.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+    imgElement.onerror = null; // Sonsuz döngüyü engelle
+  }
+
+  // Modal (Büyütme Ekranı) Fonksiyonu
+  function openModal(code, original, brand, imgSrc) {
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImg');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalBrand = document.getElementById('modalBrand');
+    const modalSearchBtn = document.getElementById('modalSearchBtn');
+
+    // Başlık ve Marka
+    modalTitle.textContent = original;
+    modalBrand.textContent = brand !== '—' ? brand : '';
+
+    // Görseli ayarla (eğer kırık link varsa varsayılan SVG'yi göster)
+    modalImg.src = imgSrc;
+    modalImg.onerror = function() {
+      const safeName = original.length > 12 ? original.substring(0, 10) + '..' : original;
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200">
+        <rect width="200" height="200" fill="#1e1e2f"/>
+        <rect x="50" y="40" width="100" height="120" rx="15" fill="none" stroke="#d4a574" stroke-width="3"/>
+        <rect x="80" y="20" width="40" height="25" rx="5" fill="#d4a574"/>
+        <text x="100" y="110" font-family="Arial" font-size="16" fill="#d4a574" text-anchor="middle" font-weight="bold">${safeName}</text>
+      </svg>`;
+      this.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      this.onerror = null;
+    };
+
+    // Google Görsel Arama Linki
+    const searchQueryText = `${brand !== '—' ? brand : ''} ${original} parfüm şişesi`.trim();
+    modalSearchBtn.href = `https://www.google.com/search?q=${encodeURIComponent(searchQueryText)}&tbm=isch`;
+
+    // Modalı Göster
+    modal.classList.add('show');
+    document.body.style.overflow = 'hidden'; // Arka plan kaydırmasını engelle
+  }
+
+  function closeModal() {
+    document.getElementById('imageModal').classList.remove('show');
+    document.body.style.overflow = 'auto';
+  }
+
+  // Modala tıklayınca kapat
+  document.getElementById('imageModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+      closeModal();
+    }
+  });
 
   function updateCounts() {
     document.getElementById('count-kadin').textContent = kadinData.length;
@@ -375,12 +253,10 @@
     document.getElementById('count-unisex').textContent = unisexData.length;
   }
 
-  // Tabloyu Çizen Fonksiyon
   function renderTable(tab) {
     const data = tab === 'kadin' ? kadinData : tab === 'erkek' ? erkekData : unisexData;
     const query = searchQuery.toLowerCase().trim();
     
-    // Arama Filtrelemesi
     const filteredData = data.filter(item => 
       item.code.toLowerCase().includes(query) || 
       item.original.toLowerCase().includes(query) || 
@@ -390,23 +266,33 @@
     const tbody = document.getElementById(`tbody-${tab}`);
     tbody.innerHTML = '';
     
-    // Sonuç Bulunamadıysa
     if (filteredData.length === 0) {
       tbody.innerHTML = `<tr><td colspan="3" style="text-align:center; padding: 3rem; color: #8888a0;">Aradığınız kriterlere uygun parfüm bulunamadı.</td></tr>`;
       return;
     }
 
-    // Sonuçları Yazdır
     filteredData.forEach(item => {
       const tr = document.createElement('tr');
-      // Eğer veride özel bir resim yoksa 'defaultImg' kullan
-      const imgSrc = item.img ? item.img : defaultImg;
       
+      // Görsel yoksa varsayılan bir görsel ata (render esnasında)
+      let displayImg = item.img;
+      if(!displayImg) {
+        const safeName = item.original.length > 12 ? item.original.substring(0, 10) + '..' : item.original;
+        const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100">
+          <rect width="100" height="100" fill="#1e1e2f"/>
+          <rect x="25" y="20" width="50" height="60" rx="10" fill="none" stroke="#d4a574" stroke-width="2"/>
+          <rect x="40" y="10" width="20" height="15" rx="3" fill="#d4a574"/>
+          <text x="50" y="55" font-family="Arial" font-size="12" fill="#d4a574" text-anchor="middle" font-weight="bold">${safeName}</text>
+        </svg>`;
+        displayImg = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      }
+
+      // Satırı oluştur
       tr.innerHTML = `
         <td><span class="code-badge">${item.code}</span></td>
         <td>
-          <div class="perfume-info">
-            <img src="${imgSrc}" alt="${item.original}" class="perfume-img" onerror="this.src='${defaultImg}'">
+          <div class="perfume-info" onclick="openModal('${item.code}', '${item.original}', '${item.brand}', '${displayImg}')">
+            <img src="${displayImg}" alt="${item.original}" class="perfume-img" onerror="handleImageError(this, '${item.original}', '${item.brand}')">
             <div class="perfume-text">
               <span class="original-name">${item.original}</span>
               ${item.brand !== '—' ? `<span class="original-brand">${item.brand}</span>` : ''}
@@ -419,17 +305,14 @@
     });
   }
 
-  // İlk Yükleme
   updateCounts();
   renderTable('kadin');
 
-  // --- ARAMA ÇUBUĞU DİNLEYİCİSİ ---
   document.getElementById('searchInput').addEventListener('input', (e) => {
     searchQuery = e.target.value;
-    renderTable(currentTab); // Sadece aktif sekmede arama yap
+    renderTable(currentTab);
   });
 
-  // --- SEKMELER ---
   const tabBtns = document.querySelectorAll('.tab-btn');
   const tables = {
     kadin: document.getElementById('table-kadin'),
@@ -447,7 +330,6 @@
       Object.values(tables).forEach(t => t.classList.remove('active'));
       tables[currentTab].classList.add('active');
       
-      // Sekme değiştiğinde tabloyu yeniden çiz (arama varsa devam eder)
       renderTable(currentTab); 
     });
   });
