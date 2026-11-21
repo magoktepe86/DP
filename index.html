@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DP Parfüm Kodları & Muadil Listesi</title>
   
-  <!-- DOĞRUDAN KOD İÇİNE GÖMÜLMÜŞ SİMGE (ICON) -->
-  <link rel="apple-touch-icon" href="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20180%20180%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22gold%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%22100%25%22%3E%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23f5d6b4%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23c49464%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22180%22%20height%3D%22180%22%20fill%3D%22%231e1e2f%22%2F%3E%3Crect%20x%3D%2245%22%20y%3D%2250%22%20width%3D%2290%22%20height%3D%22110%22%20rx%3D%2215%22%20fill%3D%22%232a2a40%22%20stroke%3D%22url(%23gold)%22%20stroke-width%3D%226%22%2F%3E%3Crect%20x%3D%2280%22%20y%3D%2230%22%20width%3D%2220%22%20height%3D%2225%22%20rx%3D%224%22%20fill%3D%22url(%23gold)%22%2F%3E%3Ctext%20x%3D%2290%22%20y%3D%22125%22%20font-family%3D%22sans-serif%22%20font-size%3D%2242%22%20font-weight%3D%22bold%22%20fill%3D%22url(%23gold)%22%20text-anchor%3D%22middle%22%20letter-spacing%3D%222%22%3EDP%3C%2Ftext%3E%3C%2Fsvg%3E">
+  <!-- YÜKLEDİĞİNİZ PNG SİMGESİ BURAYA BAĞLANDI -->
+  <link rel="apple-touch-icon" sizes="180x180" href="icon.png">
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, system-ui, sans-serif; }
@@ -120,12 +120,11 @@
     <img id="modalImg" class="modal-img" src="" alt="Parfüm Görseli">
     <div class="modal-title" id="modalTitle"></div>
     <div class="modal-brand" id="modalBrand"></div>
-    <a id="modalSearchBtn" href="#" target="_blank" class="google-btn">🔍 Google Görseller'de Ara</a>
+    <a id="modalSearchBtn" href="#" target="_blank" rel="noopener noreferrer" class="google-btn">🔍 Google Görseller'de Ara</a>
   </div>
 </div>
 
 <script>
-  // Genişletilmiş veri listeleri (Parfüm sayısı 260+)
   const kadinData = [
     { code: "A1", original: "ALCHIMIE", brand: "Halloween", sim: "8/10", img: "https://fimgs.net/mdimg/perfume/375x500.402.jpg" },
     { code: "A2", original: "ALLURE", brand: "Chanel", sim: "7/10", img: "https://fimgs.net/mdimg/perfume/375x500.518.jpg" },
